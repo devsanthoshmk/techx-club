@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>stage1</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+</head>
+<body>
+<h1 id="stage-1-easy-to-intermediate-20-questions"><em>Stage 1: Easy to
+Intermediate (20 Questions)</em></h1>
+<p>(Includes 3 hard questions marked for 5 marks.)</p>
+<h3 id="basic-programming---python"><em>Basic Programming -
+Python</em></h3>
+<ol type="1">
+<li>What is the correct way to declare a list in Python?
+<ol type="a">
+<li>list = (1,2,3)<br />
+</li>
+<li>list = {1,2,3}<br />
+</li>
+<li>list = [1,2,3]<br />
+</li>
+<li>list = &lt;1,2,3&gt;<br />
+<em>Answer:</em> c) list = [1,2,3]</li>
+</ol></li>
+<li>What will print(2**3) output?
+<ol type="a">
+<li>5<br />
+</li>
+<li>8<br />
+</li>
+<li>6<br />
+</li>
+<li>9<br />
+<em>Answer:</em> b) 8</li>
+</ol></li>
+</ol>
+<h3 id="web-development"><em>Web Development</em></h3>
+<ol start="3" type="1">
+<li>What does CSS stand for?
+<ol type="a">
+<li>Creative Style Sheets<br />
+</li>
+<li>Computer Style Sheets<br />
+</li>
+<li>Cascading Style Sheets<br />
+</li>
+<li>Colorful Style Sheets<br />
+<em>Answer:</em> c) Cascading Style Sheets</li>
+</ol></li>
+<li>Which HTML tag is used to create a hyperlink?
+<ol type="a">
+<li>&lt;hlink&gt;<br />
+</li>
+<li>&lt;a&gt;<br />
+</li>
+<li>&lt;link&gt;<br />
+</li>
+<li>&lt;href&gt;<br />
+<em>Answer:</em> b) &lt;a&gt;</li>
+</ol></li>
+</ol>
+<h3 id="digital-marketing"><em>Digital Marketing</em></h3>
+<ol start="5" type="1">
+<li>What does PPC stand for in digital marketing?
+<ol type="a">
+<li>Pay Per Click<br />
+</li>
+<li>Payment Processing Center<br />
+</li>
+<li>Paid Product Campaign<br />
+</li>
+<li>Page Promotion Cost<br />
+<em>Answer:</em> a) Pay Per Click</li>
+</ol></li>
+<li>Which platform is most used for professional networking?
+<ol type="a">
+<li>Facebook<br />
+</li>
+<li>Instagram<br />
+</li>
+<li>LinkedIn<br />
+</li>
+<li>Twitter<br />
+<em>Answer:</em> c) LinkedIn</li>
+</ol></li>
+</ol>
+<h3 id="data-structures-and-algorithms"><em>Data Structures and
+Algorithms</em></h3>
+<ol start="7" type="1">
+<li>Which data structure is based on FIFO (First In, First Out)?
+<ol type="a">
+<li>Stack<br />
+</li>
+<li>Queue<br />
+</li>
+<li>Array<br />
+</li>
+<li>Linked List<br />
+<em>Answer:</em> b) Queue</li>
+</ol></li>
+<li>Which algorithm is best suited for searching in a sorted array?
+<ol type="a">
+<li>Bubble Sort<br />
+</li>
+<li>Merge Sort<br />
+</li>
+<li>Binary Search<br />
+</li>
+<li>Linear Search<br />
+<em>Answer:</em> c) Binary Search</li>
+</ol></li>
+</ol>
+<h3 id="database-mysql"><em>Database (MySQL)</em></h3>
+<ol start="9" type="1">
+<li>Which SQL clause is used to filter records?
+<ol type="a">
+<li>WHERE<br />
+</li>
+<li>ORDER BY<br />
+</li>
+<li>GROUP BY<br />
+</li>
+<li>HAVING<br />
+<em>Answer:</em> a) WHERE</li>
+</ol></li>
+<li>What is a foreign key in SQL?<br />
+</li>
+</ol>
+<ol type="a">
+<li>A key that uniquely identifies a row<br />
+</li>
+<li>A key linking two tables<br />
+</li>
+<li>A temporary key<br />
+</li>
+<li>A primary key with NULL values<br />
+<em>Answer:</em> b) A key linking two tables</li>
+</ol>
+<h3 id="operating-systems-concepts"><em>Operating Systems
+Concepts</em></h3>
+<ol start="11" type="1">
+<li>What is the primary function of an operating system?<br />
+</li>
+</ol>
+<ol type="a">
+<li>Compiling code<br />
+</li>
+<li>Managing hardware and software<br />
+</li>
+<li>Running applications<br />
+</li>
+<li>Designing software<br />
+<em>Answer:</em> b) Managing hardware and software</li>
+</ol>
+<ol start="12" type="1">
+<li>Which memory is used to store the BIOS settings?<br />
+</li>
+</ol>
+<ol type="a">
+<li>RAM<br />
+</li>
+<li>ROM<br />
+</li>
+<li>Cache<br />
+</li>
+<li>SSD<br />
+<em>Answer:</em> b) ROM</li>
+</ol>
+<h3 id="basic-economics"><em>Basic Economics</em></h3>
+<ol start="13" type="1">
+<li>What is supply and demand?<br />
+</li>
+</ol>
+<ol type="a">
+<li>A financial theory<br />
+</li>
+<li>The balance of products available and consumer interest<br />
+</li>
+<li>Government policies<br />
+</li>
+<li>Marketing strategies<br />
+<em>Answer:</em> b) The balance of products available and consumer
+interest</li>
+</ol>
+<ol start="14" type="1">
+<li>Which economic system is controlled entirely by the
+government?<br />
+</li>
+</ol>
+<ol type="a">
+<li>Capitalism<br />
+</li>
+<li>Socialism<br />
+</li>
+<li>Mixed economy<br />
+</li>
+<li>Market economy<br />
+<em>Answer:</em> b) Socialism</li>
+</ol>
+<h3 id="computer-fundamentals"><em>Computer Fundamentals</em></h3>
+<ol start="15" type="1">
+<li>What is the full form of URL?<br />
+</li>
+</ol>
+<ol type="a">
+<li>Uniform Resource Locator<br />
+</li>
+<li>Universal Research Link<br />
+</li>
+<li>User Redirect Link<br />
+</li>
+<li>Uniform Retrieval Locator<br />
+<em>Answer:</em> a) Uniform Resource Locator</li>
+</ol>
+<ol start="16" type="1">
+<li>Which of these is a primary storage device?<br />
+</li>
+</ol>
+<ol type="a">
+<li>Hard disk<br />
+</li>
+<li>SSD<br />
+</li>
+<li>RAM<br />
+</li>
+<li>USB drive<br />
+<em>Answer:</em> c) RAM</li>
+</ol>
+<h3 id="management-concepts"><em>Management Concepts</em></h3>
+<ol start="17" type="1">
+<li>What is the first step in the management process?<br />
+</li>
+</ol>
+<ol type="a">
+<li>Controlling<br />
+</li>
+<li>Organizing<br />
+</li>
+<li>Planning<br />
+</li>
+<li>Directing<br />
+<em>Answer:</em> c) Planning</li>
+</ol>
+<hr />
+<h3 id="hard-questions-5-marks"><em>Hard Questions (5 Marks)</em></h3>
+<ol start="18" type="1">
+<li><em>(Data Structures)</em> What is the worst-case time complexity of
+QuickSort?<br />
+</li>
+</ol>
+<ol type="a">
+<li>O(n²)<br />
+</li>
+<li>O(n log n)<br />
+</li>
+<li>O(n)<br />
+</li>
+<li>O(log n)<br />
+<em>Answer:</em> a) O(n²)</li>
+</ol>
+<ol start="19" type="1">
+<li><em>(Databases)</em> What does ACID stand for in database
+management?<br />
+</li>
+</ol>
+<ol type="a">
+<li>Automatic, Consistent, Integrated, Durable<br />
+</li>
+<li>Atomicity, Consistency, Isolation, Durability<br />
+</li>
+<li>Access, Control, Integrity, Data<br />
+</li>
+<li>Algorithm, Computation, Information, Database<br />
+<em>Answer:</em> b) Atomicity, Consistency, Isolation, Durability</li>
+</ol>
+<ol start="20" type="1">
+<li><em>(Operating Systems)</em> What is a deadlock in operating
+systems?<br />
+<em>Answer:</em> c) A situation where two or more processes are waiting
+for resources indefinitely</li>
+</ol>
+</body>
+</html>

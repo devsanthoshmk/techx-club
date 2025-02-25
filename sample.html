@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>National Science Day Quiz</title>
+  <style>
+    /* Reset and Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    :root {
+      --primary: #3a86ff;
+      --secondary: #ff006e;
+      --tertiary: #8338ec;
+      --light: #f8f9fa;
+      --dark: #212529;
+      --correct: #38b000;
+      --incorrect: #d00000;
+      --highlight: #ffbe0b;
+    }
+    
+    html {
+      font-size: 18px;
+      scroll-behavior: smooth;
+      color: var(--dark);
+      background-color: #000;
+      overflow-x: hidden;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+      margin: 0;
+      padding: 0;
+      width: 100vw;
+    }
+    
+    /* Parallax Scrolling Setup */
+    .parallax-container {
+      height: 100vh;
+      width: 100vw;
+      overflow-y: auto;
+      overflow-x: hidden;
+      perspective: 10px;
+      scroll-snap-type: y mandatory;
+    }
+    
+    .parallax-layer {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .bg-layer {
+      transform: translateZ(-10px) scale(2);
+    }
+    
+    .mid-layer {
+      transform: translateZ(-5px) scale(1.5);
+    }
+    
+    .front-layer {
+      transform: translateZ(0);
+    }
+    
+    /* Section Styling */
+    section {
+      position: relative;
+      height: 100vh;
+      width: 100vw;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      scroll-snap-align: start;
+      background-size: cover;
+      background-position: center;
+      color: var(--light);
+      overflow: hidden;
+    }
+    
+    .content-container {
+      background: rgba(25, 25, 35, 0.85);
+      backdrop-filter: blur(8px);
+      border-radius: 10px;
+      padding: 2rem;
+      width: 90%;
+      max-width: 1000px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      z-index: 10;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    /* Header and Title Styling */
+    h1 {
+      font-size: 3.5rem;
+      background: linear-gradient(45deg, var(--primary), var(--tertiary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-align: center;
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+    
+    h3 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: var(--light);
+      text-align: center;
+    }
+    
+    h4 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: var(--highlight);
+    }
+    
+    /* Quiz Styling */
+    .quiz-question {
+      margin-bottom: 2rem;
+    }
+    
+    .options {
+      list-style-type: none;
+      padding: 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    
+    .option {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s;
+      border: 2px solid transparent;
+    }
+    
+    .option:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
+      border-color: var(--primary);
+    }
+    
+    .option.selected {
+      background: rgba(58, 134, 255, 0.3);
+      border-color: var(--primary);
+    }
+    
+    .option.correct {
+      background: rgba(56, 176, 0, 0.3);
+      border-color: var(--correct);
+    }
+    
+    .option.incorrect {
+      background: rgba(208, 0, 0, 0.3);
+      border-color: var(--incorrect);
+    }
+    
+    /* Code Blocks */
+    pre {
+      background: rgba(0, 0, 0, 0.6);
+      padding: 1rem;
+      border-radius: 8px;
+      overflow-x: auto;
+      margin: 1rem 0;
+      font-family: 'Courier New', Courier, monospace;
+    }
+    
+    code {
+      color: #f8f8f2;
+    }
+    
+    /* Navigation */
+    .nav-buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 2rem;
+    }
+    
+    .nav-button {
+      background: linear-gradient(45deg, var(--primary), var(--tertiary));
+      color: white;
+      border: none;
+      padding: 0.8rem 1.5rem;
+      border-radius: 50px;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: 600;
+      transition: all 0.3s;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+    
+    .nav-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    }
+    
+    .nav-button:active {
+      transform: translateY(-1px);
+    }
+    
+    .nav-button:disabled {
+      background: #666;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+    
+    /* Progress Bar */
+    .progress-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 8px;
+      z-index: 100;
+    }
+    
+    .progress-bar {
+      height: 100%;
+      background: linear-gradient(90deg, var(--primary), var(--tertiary));
+      width: 0;
+      transition: width 0.3s;
+    }
+    
+    /* Score Panel */
+    .score-panel {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 1rem;
+      border-radius: 10px;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      backdrop-filter: blur(5px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .score {
+      color: var(--light);
+      font-weight: bold;
+    }
+    
+    /* Animations */
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+      100% { transform: translateY(0px); }
+    }
+    
+    .animate-fade-in {
+      animation: fadeIn 1s ease-out forwards;
+    }
+    
+    .floating {
+      animation: float 6s ease-in-out infinite;
+    }
+    
+    /* Background Decorations */
+    .particle {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.4;
+      pointer-events: none;
+    }
+    
+    /* Introduction and Summary Sections */
+    .intro-section, .summary-section {
+      text-align: center;
+      padding: 2rem;
+    }
+    
+    .intro-section p, .summary-section p {
+      font-size: 1.2rem;
+      max-width: 800px;
+      margin: 1rem auto;
+    }
+    
+    .start-button {
+      background: linear-gradient(45deg, var(--tertiary), var(--secondary));
+      color: white;
+      border: none;
+      padding: 1rem 2rem;
+      font-size: 1.5rem;
+      border-radius: 50px;
+      cursor: pointer;
+      margin-top: 2rem;
+      transition: all 0.3s;
+      font-weight: bold;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    }
+    
+    .start-button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 25px rgba(0, 0, 0, 0.5);
+    }
+    
+    /* Timer */
+    .timer {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: var(--light);
+    }
+    
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+      html {
+        font-size: 16px;
+      }
+      
+      h1 {
+        font-size: 2.5rem;
+      }
+      
+      h3 {
+        font-size: 1.5rem;
+      }
+      
+      .content-container {
+        width: 95%;
+        padding: 1.5rem;
+      }
+      
+      .options {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Progress Bar -->
+  <div class="progress-container">
+    <div class="progress-bar" id="progressBar"></div>
+  </div>
+  
+  <!-- Score Panel -->
+  <div class="score-panel">
+    <div class="score">Score: <span id="currentQuestion">0</span>/<span id="totalQuestions">10</span></div>
+    <div class="timer" id="timer">00:00</div>
+  </div>
+  
+  <div class="parallax-container" id="quizContainer">
+    <!-- Intro Section -->
+    <section id="intro" class="intro-section">
+      <div class="parallax-layer bg-layer">
+        <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);"></div>
+      </div>
+      <div class="parallax-layer mid-layer">
+        <div class="floating" style="font-size: 15rem; color: rgba(255, 255, 255, 0.1);">⚛️</div>
+      </div>
+      <div class="parallax-layer front-layer">
+        <div class="content-container animate-fade-in">
+          <h1>National Science Day Quiz</h1>
+          <p>Welcome to the National Science Day Quiz Challenge! Test your knowledge across various technical domains and problem-solving skills.</p>
+          <p>This quiz consists of 10 challenging questions covering programming, web development, algorithms, and more.</p>
+          <button class="start-button" id="startButton">Start Quiz</button>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Question 1 -->
+    <section id="q1" class="question-section" style="display: none;">
+      <div class="parallax-layer bg-layer">
+        <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #000428, #004e92);"></div>
+      </div>
+      <div class="parallax-layer mid-layer">
+        <div class="floating" style="font-size: 12rem; color: rgba(255, 255, 255, 0.1);">🐍</div>
+      </div>
+      <div class="parallax-layer front-layer">
+        <div class="content-container">
+          <h3>Basic Programming - Python</h3>
+          <div class="quiz-question">
+            <h4>1. What will be the output of the following Python code?</h4>
+            <pre><code class="language-python">def mystery(n):
+    return n * (n - 1)
+
+print(mystery(5))</code></pre>
+            <ul class="options" data-correct="c">
+              <li class="option" data-option="a">a) 25</li>
+              <li class="option" data-option="b">b) 10</li>
+              <li class="option" data-option="c">c) 20</li>
+              <li class="option" data-option="d">d) 15</li>
+            </ul>
+          </div>
+          <div class="nav-buttons">
+            <button class="nav-button prev-button" disabled>Previous</button>
+            <button class="nav-button next-button">Next</button>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Question 2 -->
+    <section id="q2" class="question-section" style="display: none;">
+      <div class="parallax-layer bg-layer">
+        <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #0b486b, #f56217);"></div>
+      </div>
+      <div class="parallax-layer mid-layer">
+        <div class="floating" style="font-size: 12rem; color: rgba(255, 255, 255, 0.1);">🌐</div>
+      </div>
+      <div class="parallax-layer front-layer">
+        <div class="content-container">
+          <h3>Web Development</h3>
+          <div class="quiz-question">
+            <h4>2. What will this JavaScript snippet output in an HTML console?</h4>
+            <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;body&gt;
+&lt;script&gt;
+    console.log(3 + "3" - 1);
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+            <ul class="options" data-correct="a">
+              <li class="option" data-option="a">a) 32</li>
+              <li class="option" data-option="b">b) 33</li>
+              <li class="option" data-option="c">c) 5</li>
+              <li class="option" data-option="d">d) 31</li>
+            </ul>
+          </div>
+          <div class="nav-buttons">
+            <button class="nav-button prev-button">Previous</button>
+            <button class="nav-button next-button">Next</button>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Question 3 -->
+    <section id="q3" class="question-section" style="display: none;">
+      <div class="parallax-layer bg-layer">
+        <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #134e5e, #71b280);"></div>
+      </div>
+      <div class="parallax-layer mid-layer">
+        <div class="floating" style="font-size: 12rem; color: rgba(255, 255, 255, 0.1);">📊</div>
+      </div>
+      <div class="parallax-layer front-layer">
+        <div class="content-container">
+          <h3>Digital Marketing</h3>
+          <div class="quiz-question">
+            <h4>3. Which metric is used to measure the percentage of visitors who leave a website after viewing only one page?</h4>
+            <ul class="options" data-correct="b">
+              <li class="option" data-option="a">a) Click-Through Rate (CTR)</li>
+              <li class="option" data-option="b">b) Bounce Rate</li>
+              <li class="option" data-option="c">c) Conversion Rate</li>
+              <li class="option" data-option="d">d) Page Rank</li>
+            </ul>
+          </div>
+          <div class="nav-buttons">
+            <button class="nav-button prev-button">Previous</button>
+            <button class="nav-button next-button">Next</button>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Question 4 -->
+    <section id="q4" class="question-section" style="display: none;">
+      <div class="parallax-layer bg-layer">
+        <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #2c3e50, #4ca1af);"></div>
+      </div>
+      <div class="parallax-layer mid-layer">
+        <div class="floating" style="font-size: 12rem; color: rgba(255, 255, 255, 0.1);">🔄</div>
+      </div>
+      <div class="parallax-layer front-layer">
+        <div class="content-container">
+          <h3>Data Structures and Algorithms</h3>
+          <div class="quiz-question">
+            <h4>4. What will be the output of the following Python code?</h4>
+            <pre><code class="language-python">arr = [10, 20, 30, 40, 50]
+print(arr[::-1])</code></pre>
+            <ul class="options" data-correct="b">
+              <li class="option" data-option="a">a) [10, 20, 30, 40, 50]</li>
+              <li class="option" data-option="b">b) [50, 40, 30, 20, 10]</li>
+              <li class="option" data-option="c">c) [40, 30, 20, 10, 50]</li>
+              <li class="option" data-option="d">d) [30, 20, 10, 50, 40]</li>
+            </ul>
+          </div>
+          <div class="nav-buttons">
+            <button class="nav-button prev-button">Previous</button>
+            <button class="nav-button next-button">Next</button>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Question 5 -->
+    <section id="q5" class="question-section" style="display: none;">
+      <div class="parallax-layer bg-layer">
+        <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #3a6186, #89253e);"></div>
+      </div>
+      <div class="parallax-layer mid-layer">
+        <div class="floating" style="font-size: 12rem; color: rgba(255, 255, 255, 0.1);">💾</div>
+      </div>
+      <div class="parallax-layer front-layer">
+        <div class="content-container">
+          <h3>Database (MySQL)</h3>
+          <div class="quiz-question">
+            <h4>5. What will be the output of the following SQL query?</h4>
+            <pre><code class="language-sql">SELECT COUNT(*) FROM customers WHERE age > 30;</code></pre>
+            <ul class="options" data-correct="b">
+              <li class="option" data-option="a">a) Returns the total number of customers</li>
+              <li class="option" data-option="b">b) Returns the count of customers older than 30</li>
+              <li class="option" data-option="c">c) Returns the names of customers older than 30</li>
+              <li class="option" data-option="d">d) Returns the count of all customers with NULL values</li>
+            </ul>
+          </div>
+          <div class="nav-buttons">
+            <button class="nav-button prev-button">Previous</button>
+            <button class="nav-button next-button">Next</button>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Question 6 -->
+    <section id="q6" class="question-section" style="display: none;">
+      <div class="parallax-layer bg-layer">
+        <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #141e30, #243b55);"></div>
+      </div>
+      <div class="parallax-layer mid-layer">
+        <div class="floating" style="font-size: 12rem; color: rgba(255, 255, 255, 0.1);">⚙️</div>
+      </div>
+      <div class="parallax-layer front-layer">
+        <div class="content-container">
+          <h3>Operating Systems Concepts</h3>
+          <div class="quiz-question">
+            <h4>6. What happens when a process executes a system call to request a resource?</h4>
+            <ul class="options" data-correct="b">
+              <li class="option" data-option="a">a) The request is always granted immediately</li>
+              <li class="option" data-option="b">b) The operating system checks availability and may block the process if needed</li>
+              <li class="option" data-option="c">c) The process is terminated if the resource is not available</li>
+              <li class="option" data-option="d">d) The request is ignored until all resources are available</li>
+            </ul>
+          </div>
+          <div class="nav-buttons">
+            <button class="nav-button prev-button">Previous</button>
+            <button class="nav-button next-button">Next</button>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Question 7 -->
+    <section id="q7" class="question-section" style="display: none;">
+      <div class="parallax-layer bg-layer">
+        <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #2980b9, #2c3e50);"></div>
+      </div>
+      <div class="parallax-layer mid-layer">
+        <div class="floating" style="font-size: 12rem; color: rgba(255, 255, 255, 0.1);">💰</div>
+      </div>
+      <div class="parallax-layer front-layer">
+        <div class="content-container">
+          <h3>Basic Economics</h3>
+          <div class="quiz-question">
+            <h4>7. If demand increases and supply remains constant, what happens to price?</h4>
+            <ul class="options" data-correct="a">
+              <li class="option" data-option="a">a) Increases</li>
+              <li class="option" data-option="b">b) Decreases</li>
+              <li class="option" data-option="c">c) Remains unchanged</li>
+              <li class="option" data-option="d">d) Fluctuates randomly</li>
+            </ul>
+          </div>
+          <div class="nav-buttons">
+            <button class="nav-button prev-button">Previous</button>
+            <button class="nav-button next-button">Next</button>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Question 8 -->
+    <section id="q8" class="question-section" style="display: none;">
+      <div class="parallax-layer bg-layer">
+        <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #4b6cb7, #182848);"></div>
+      </div>
+      <div class="parallax-layer mid-layer">
+        <div class="floating" style="font-size: 12rem; color: rgba(255, 255, 255, 0.1);">💻</div>
+      </div>
+      <div class="parallax-layer front-layer">
+        <div class="content-container">
+          <h3>Computer Fundamentals</h3>
+          <div class="quiz-question">
+            <h4>8. What will be the output of the following Python code?</h4>
+            <pre><code class="language-python">binary_number = bin(10)
+print(binary_number)</code></pre>
+            <ul class="options" data-correct="a">
+              <li class="option" data-option="a">a) 0b1010</li>
+              <li class="option" data-option="b">b) 1010b</li>
+              <li class="option" data-option="c">c) 10b</li>
+              <li class="option" data-option="d">d) 0b10</li>
+            </ul>
+          </div>
+          <div class="nav-buttons">
+            <button class="nav-button prev-button">Previous</button>
+            <button class="nav-button next-button">Next</button>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Question 9 -->
+    <section id="q9" class="question-section" style="display: none;">
+      <div class="parallax-layer bg-layer">
+        <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #493240, #ff0099);"></div>
+      </div>
+      <div class="parallax-layer mid-layer">
+        <div class="floating" style="font-size: 12rem; color: rgba(255, 255, 255, 0.1);">📈</div>
+      </div>
+      <div class="parallax-layer front-layer">
+        <div class="content-container">
+          <h3>Management Concepts</h3>
+          <div class="quiz-question">
+            <h4>9. What does SWOT stand for in business strategy?</h4>
+            <ul class="options" data-correct="b">
+              <li class="option" data-option="a">a) Strength, Weakness, Operations, Time</li>
+              <li class="option" data-option="b">b) Strength, Weakness, Opportunities, Threats</li>
+              <li class="option" data-option="c">c) Strategy, Work, Optimization, Tactics</li>
+              <li class="option" data-option="d">d) Sales, Worth, Objectives, Targets</li>
+            </ul>
+          </div>
+          <div class="nav-buttons">
+            <button class="nav-button prev-button">Previous</button>
+            <button class="nav-button next-button">Next</button>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Question 10 -->
+    <section id="q10" class="question-section" style="display: none;">
+      <div class="parallax-layer bg-layer">
+        <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #000046, #1cb5e0);"></div>
+      </div>
+      <div class="parallax-layer mid-layer">
+        <div class="floating" style="font-size: 12rem; color: rgba(255, 255, 255, 0.1);">🧮</div>
+      </div>
+      <div class="parallax-layer front-layer">
+        <div class="content-container">
+          <h3>Problem Solving (Python Coding)</h3>
+          <div class="quiz-question">
+            <h4>10. What will be the output of the following Python program?</h4>
+            <pre><code class="language-python">def factorial(n):
+    if n == 0:
+        return 1
+    else:
+        return n * factorial(n - 1)
+
+print(factorial(4))</code></pre>
+            <ul class="options" data-correct="a">
+              <li class="option" data-option="a">a) 24</li>
+              <li class="option" data-option="b">b) 12</li>
+              <li class="option" data-option="c">c) 20</li>
+              <li class="option" data-option="d">d) 10</li>
+            </ul>
+          </div>
+          <div class="nav-buttons">
+            <button class="nav-button prev-button">Previous</button>
+            <button class="nav-button finish-button">Finish Quiz</button>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Summary Section -->
+    <section id="summary" class="summary-section" style="display: none;">
+      <div class="parallax-layer bg-layer">
+        <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #16222a, #3a6073);"></div>
+      </div>
+      <div class="parallax-layer mid-layer">
+        <div class="floating" style="font-size: 15rem; color: rgba(255, 255, 255, 0.1);">🏆</div>
+      </div>
+      <div class="parallax-layer front-layer">
+        <div class="content-container animate-fade-in">
+          <h1>Quiz Completed!</h1>
+          <h3>Your Score: <span id="finalScore">0</span>/<span id="finalTotal">10</span></h3>
+          <p>Thank you for participating in our National Science Day Quiz!</p>
+          <div id="resultDetails"></div>
+          <button class="start-button" id="restartButton">Restart Quiz</button>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+  <script>
+    let state;
+    // Continue the script section from where it was cut off
+document.addEventListener('DOMContentLoaded', function() {
+    // Quiz state
+    state = {
+      currentQuestion: 0,
+      totalQuestions: 10,
+      score: 0,
+      answers: Array(10).fill(null),
+      startTime: null,
+      timerInterval: null
+    };
+    
+    // DOM elements
+    const startButton = document.getElementById('startButton');
+    const restartButton = document.getElementById('restartButton');
+    const progressBar = document.getElementById('progressBar');
+    const currentQuestionEl = document.getElementById('currentQuestion');
+    const totalQuestionsEl = document.getElementById('totalQuestions');
+    const finalScoreEl = document.getElementById('finalScore');
+    const finalTotalEl = document.getElementById('finalTotal');
+    const resultDetailsEl = document.getElementById('resultDetails');
+    const timerEl = document.getElementById('timer');
+    
+    // Get all sections
+    const introSection = document.getElementById('intro');
+    const summarySection = document.getElementById('summary');
+    const questionSections = Array.from(document.querySelectorAll('.question-section'));
+    
+    // Set total questions in UI
+    totalQuestionsEl.textContent = state.totalQuestions;
+    finalTotalEl.textContent = state.totalQuestions;
+    
+    // Initialize quiz
+    function initQuiz() {
+      state.currentQuestion = 0;
+      state.score = 0;
+      state.answers = Array(state.totalQuestions).fill(null);
+      
+      // Reset UI
+      currentQuestionEl.textContent = state.currentQuestion;
+      progressBar.style.width = '0%';
+      
+      // Hide all question sections
+      questionSections.forEach(section => {
+        section.style.display = 'none';
+      });
+      
+      // Show intro section
+      introSection.style.display = 'flex';
+      summarySection.style.display = 'none';
+      
+      // Clear timer if it exists
+      if (state.timerInterval) {
+        clearInterval(state.timerInterval);
+        state.timerInterval = null;
+      }
+      timerEl.textContent = '00:00';
+    }
+    
+    // Start the quiz
+    function startQuiz() {
+      // Hide intro section
+      introSection.style.display = 'none';
+      
+      // Show first question section
+      questionSections[0].style.display = 'flex';
+      
+      // Update progress bar
+      updateProgressBar();
+      
+      // Start timer
+      state.startTime = new Date();
+      state.timerInterval = setInterval(updateTimer, 1000);
+    }
+    
+    // Update timer
+    function updateTimer() {
+      const now = new Date();
+      const elapsedSeconds = Math.floor((now - state.startTime) / 1000);
+      const minutes = Math.floor(elapsedSeconds / 60);
+      const seconds = elapsedSeconds % 60;
+      timerEl.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+    }
+    
+    // Update progress bar
+    function updateProgressBar() {
+      const progress = ((state.currentQuestion + 1) / state.totalQuestions) * 100;
+      progressBar.style.width = `${progress}%`;
+    }
+    
+    // Navigate to next question
+    function nextQuestion() {
+      // Hide current question
+      questionSections[state.currentQuestion].style.display = 'none';
+      
+      // Increment current question
+      state.currentQuestion++;
+      
+      // Show next question or summary
+      if (state.currentQuestion < state.totalQuestions) {
+        questionSections[state.currentQuestion].style.display = 'flex';
+        updateProgressBar();
+      } else {
+        console.log('finised');
+      }
+    }
+    
+    // Navigate to previous question
+    function prevQuestion() {
+      // Hide current question
+      questionSections[state.currentQuestion].style.display = 'none';
+      
+      // Decrement current question
+      state.currentQuestion--;
+      
+      // Show previous question
+      questionSections[state.currentQuestion].style.display = 'flex';
+      updateProgressBar();
+    }
+    
+    // Handle option selection
+    function selectOption(option) {
+      const questionContainer = option.closest('.quiz-question');
+      const options = Array.from(questionContainer.querySelectorAll('.option'));
+      const correctAnswer = questionContainer.querySelector('.options').dataset.correct;
+      
+      // Remove any existing selection
+      options.forEach(opt => opt.classList.remove('selected', 'correct', 'incorrect'));
+      
+      // Add selection class
+      option.classList.add('selected');
+      
+      // Store answer
+      state.answers[state.currentQuestion] = option.dataset.option;
+      
+      // Check if answer is correct
+      if (option.dataset.option === correctAnswer) {
+        option.classList.add('correct');
+        if (state.answers[state.currentQuestion] === null) {
+          // Only increase score if this is the first time answering
+          state.score++;
+          currentQuestionEl.textContent = state.currentQuestion;
+        }
+      } else {
+        option.classList.add('incorrect');
+        // Show the correct answer
+        options.forEach(opt => {
+          if (opt.dataset.option === correctAnswer) {
+            opt.classList.add('correct');
+          }
+        });
+      }
+    }
+    
+    // Finish quiz
+  
+    // Add event listeners
+    startButton.addEventListener('click', startQuiz);
+    restartButton.addEventListener('click', initQuiz);
+    
+    // Add event listeners for options
+    document.querySelectorAll('.option').forEach(option => {
+      option.addEventListener('click', function() {
+        selectOption(this);
+      });
+    });
+    
+    // Add event listeners for navigation buttons
+    document.querySelectorAll('.next-button').forEach(button => {
+      button.addEventListener('click', nextQuestion);
+    });
+    
+    document.querySelectorAll('.prev-button').forEach(button => {
+      button.addEventListener('click', prevQuestion);
+    });
+    
+    document.querySelectorAll('.finish-button').forEach(button => {
+      button.addEventListener('click', () => console.log('finished'));
+    });
+    
+    // Create particles for background decoration
+    function createParticles() {
+      const container = document.body;
+      const particleCount = 50;
+      
+      for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.classList.add('particle');
+        
+        // Random size
+        const size = Math.random() * 15 + 5;
+        particle.style.width = `${size}px`;
+        particle.style.height = `${size}px`;
+        
+        // Random position
+        particle.style.left = `${Math.random() * 100}vw`;
+        particle.style.top = `${Math.random() * 100}vh`;
+        
+        // Random color - science theme colors
+        const colors = ['#3a86ff', '#ff006e', '#8338ec', '#ffbe0b', '#fb5607'];
+        particle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        
+        // Animation
+        particle.style.animation = `float ${Math.random() * 10 + 5}s linear infinite`;
+        particle.style.animationDelay = `${Math.random() * 5}s`;
+        
+        container.appendChild(particle);
+      }
+    }
+    
+    // Initialize the quiz and create particles
+    initQuiz();
+    createParticles();
+  });
+  
+</script>
+  </body>
+  </html>

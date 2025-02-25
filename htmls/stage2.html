@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>stage2</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+</head>
+<body>
+<h2 id="stage-2-intermediate-15-questions"><em>Stage 2: Intermediate (15
+Questions)</em></h2>
+<p>(Includes 3 hard questions for 5 marks each, marked accordingly.)</p>
+<h3 id="basic-programming---python"><em>Basic Programming -
+Python</em></h3>
+<ol type="1">
+<li>What will print(bool([])) output in Python?
+<ol type="a">
+<li>True<br />
+</li>
+<li>False<br />
+</li>
+<li>Error<br />
+</li>
+<li>None<br />
+<em>Answer:</em> b) False</li>
+</ol></li>
+<li>Which of the following is used to handle exceptions in Python?
+<ol type="a">
+<li>try-except<br />
+</li>
+<li>if-else<br />
+</li>
+<li>switch-case<br />
+</li>
+<li>error-handler<br />
+<em>Answer:</em> a) try-except</li>
+</ol></li>
+</ol>
+<h3 id="web-development"><em>Web Development</em></h3>
+<ol start="3" type="1">
+<li>Which tag is used to define an internal CSS in HTML?
+<ol type="a">
+<li>&lt;css&gt;<br />
+</li>
+<li>&lt;style&gt;<br />
+</li>
+<li>&lt;link&gt;<br />
+</li>
+<li>&lt;script&gt;<br />
+<em>Answer:</em> b) &lt;style&gt;</li>
+</ol></li>
+<li>What does ‘href’ in an anchor tag &lt;a&gt; define?
+<ol type="a">
+<li>Hyperlink Reference<br />
+</li>
+<li>HTML Rendering Framework<br />
+</li>
+<li>Header Reference<br />
+</li>
+<li>Hypertext Result File<br />
+<em>Answer:</em> a) Hyperlink Reference</li>
+</ol></li>
+</ol>
+<h3 id="digital-marketing"><em>Digital Marketing</em></h3>
+<ol start="5" type="1">
+<li>Which of the following is an example of Digital Marketing?
+<ol type="a">
+<li>TV Advertisements<br />
+</li>
+<li>Social Media Ads<br />
+</li>
+<li>Radio Advertisements<br />
+</li>
+<li>Newspaper Ads<br />
+<em>Answer:</em> b) Social Media Ads</li>
+</ol></li>
+</ol>
+<h3 id="data-structure-and-algorithms"><em>Data Structure and
+Algorithms</em></h3>
+<ol start="6" type="1">
+<li>Which of these data structures follows LIFO (Last In, First Out)?
+<ol type="a">
+<li>Queue<br />
+</li>
+<li>Stack<br />
+</li>
+<li>Array<br />
+</li>
+<li>Linked List<br />
+<em>Answer:</em> b) Stack</li>
+</ol></li>
+<li><em>(Hard - 5 marks)</em> What is an advantage of using recursion in
+programming?
+<ol type="a">
+<li>It reduces function calls<br />
+</li>
+<li>It simplifies complex problems<br />
+</li>
+<li>It speeds up execution<br />
+</li>
+<li>It decreases memory usage<br />
+<em>Answer:</em> b) It simplifies complex problems</li>
+</ol></li>
+</ol>
+<h3 id="database-mysql"><em>Database (MySQL)</em></h3>
+<ol start="8" type="1">
+<li>Which SQL statement is used to remove all records from a table but
+keeps its structure?
+<ol type="a">
+<li>DELETE<br />
+</li>
+<li>REMOVE<br />
+</li>
+<li>DROP<br />
+</li>
+<li>TRUNCATE<br />
+<em>Answer:</em> d) TRUNCATE</li>
+</ol></li>
+<li>Which database key is used to uniquely identify each row in a table?
+<ol type="a">
+<li>Foreign key<br />
+</li>
+<li>Super key<br />
+</li>
+<li>Candidate key<br />
+</li>
+<li>Primary key<br />
+<em>Answer:</em> d) Primary key</li>
+</ol></li>
+</ol>
+<h3 id="operating-systems-concepts"><em>Operating Systems
+Concepts</em></h3>
+<ol start="10" type="1">
+<li>What is the main role of an operating system kernel?<br />
+</li>
+</ol>
+<ol type="a">
+<li>Manage files<br />
+</li>
+<li>Manage hardware and software communication<br />
+</li>
+<li>Display graphics<br />
+</li>
+<li>Control network access<br />
+<em>Answer:</em> b) Manage hardware and software communication</li>
+</ol>
+<ol start="11" type="1">
+<li><em>(Hard - 5 marks)</em> What is the primary difference between a
+process and a thread?<br />
+</li>
+</ol>
+<ol type="a">
+<li>A process is a lightweight operation, while a thread is
+heavyweight<br />
+</li>
+<li>A thread is a lightweight operation, while a process is
+heavyweight<br />
+</li>
+<li>Both are identical in execution<br />
+</li>
+<li>Threads consume more memory than processes<br />
+<em>Answer:</em> b) A thread is a lightweight operation, while a process
+is heavyweight</li>
+</ol>
+<h3 id="basic-economics"><em>Basic Economics</em></h3>
+<ol start="12" type="1">
+<li>What is the term used for the total market value of all final goods
+and services produced within a country in a given year?<br />
+</li>
+</ol>
+<ol type="a">
+<li>Gross National Product (GNP)<br />
+</li>
+<li>Net National Product (NNP)<br />
+</li>
+<li>Gross Domestic Product (GDP)<br />
+</li>
+<li>Consumer Price Index (CPI)<br />
+<em>Answer:</em> c) Gross Domestic Product (GDP)</li>
+</ol>
+<h3 id="computer-fundamentals"><em>Computer Fundamentals</em></h3>
+<ol start="13" type="1">
+<li>Which of the following is an example of a dynamically typed
+language?<br />
+</li>
+</ol>
+<ol type="a">
+<li>C++<br />
+</li>
+<li>Java<br />
+</li>
+<li>Python<br />
+</li>
+<li>Swift<br />
+<em>Answer:</em> c) Python</li>
+</ol>
+<h3 id="management-concepts"><em>Management Concepts</em></h3>
+<ol start="14" type="1">
+<li>What is the primary function of management in an organization?<br />
+</li>
+</ol>
+<ol type="a">
+<li>Marketing<br />
+</li>
+<li>Planning, Organizing, Leading, and Controlling (POLC)<br />
+</li>
+<li>Selling products<br />
+</li>
+<li>Maintaining accounts<br />
+<em>Answer:</em> b) Planning, Organizing, Leading, and Controlling
+(POLC)</li>
+</ol>
+<ol start="15" type="1">
+<li><em>(Hard - 5 marks)</em> What is the main advantage of indexing in
+a database?<br />
+</li>
+</ol>
+<ol type="a">
+<li>Slows down queries<br />
+</li>
+<li>Increases redundancy<br />
+</li>
+<li>Speeds up searching<br />
+</li>
+<li>Deletes duplicate records<br />
+<em>Answer:</em> c) Speeds up searching</li>
+</ol>
+<hr />
+<h3 id="final-structure">✅ <em>Final Structure:</em></h3>
+<ul>
+<li><em>Total Questions:</em> 15<br />
+</li>
+<li><em>Hard Questions (5 marks each):</em> 3
+<ul>
+<li><em>Recursion in programming (Data Structures)</em></li>
+<li><em>Process vs. Thread (Operating Systems)</em></li>
+<li><em>Indexing in Databases (MySQL)</em></li>
+</ul></li>
+</ul>
+</body>
+</html>

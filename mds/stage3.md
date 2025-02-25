@@ -5,12 +5,9 @@
 
 ### *Basic Programming - Python*  
 #### *1. What will be the output of the following Python code?*  
-```python
-
-
+python
 def mystery(n):
     return n * (n - 1)
-```
 
 print(mystery(5))
 
@@ -125,7 +122,7 @@ d) Sales, Worth, Objectives, Targets
 
 ### *Problem Solving (Python Coding)*  
 #### *10. What will be the output of the following Python program?*  
-python
+```python
 def factorial(n):
     if n == 0:
         return 1
@@ -133,6 +130,7 @@ def factorial(n):
         return n * factorial(n - 1)
 
 print(factorial(4))
+```
 
 a) 24  
 b) 12  
@@ -140,6 +138,3 @@ c) 20
 d) 10  
 *Answer:* a) 24  
 
----
-
-This completes *Stage 3* with *10 little hard questions, including **coding and problem-solving questions in Python*. Let me know if you need modifications! 🚀
