@@ -394,11 +394,11 @@
         <div class="content-container">
           <h3>{{ question.category }} </h3>
           <div class="quiz-question">
-            <h4>{{question.q | e}}</h4>
+            <h4>{{loop.index}}.{{ " "+question.question | e}}</h4>
             {% if question.code %}
             <pre><code class="language-python">{{question.code | e}}</code></pre>
             {% endif %}
-            <ul class="options" data-correct="c">
+            <ul class="options" data-correct="{{question.ans}}">
             {% for  key, value in question.options.items() %}
               <li class="option" data-option="{{key}}">{{key}}) {{value | e}}</li>
             {% endfor %}
@@ -440,7 +440,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Quiz state
     state = {
       currentQuestion: 0,
-      totalQuestions: 10,
+      totalQuestions: {{questions | length}},
       score: 0,
       answers: Array(10).fill(null),
       startTime: null,

@@ -1,0 +1,122 @@
+[
+    {
+      "category": "Basic Programming - Python",
+      "question": "What will be the output of the following Python code?",
+      "code": "def mystery(n):\n    return n * (n - 1)\n\nprint(mystery(5))",
+      "options": {
+        "a": "25",
+        "b": "10",
+        "c": "20",
+        "d": "15"
+      },
+      "ans": "c"
+    },
+    {
+      "category": "Web Development",
+      "question": "What will this JavaScript snippet output in an HTML console?",
+      "code": "<!DOCTYPE html>\n<html>\n<body>\n<script>\n    console.log(3 + \"3\" - 1);\n</script>\n</body>\n</html>",
+      "options": {
+        "a": "32",
+        "b": "33",
+        "c": "5",
+        "d": "31"
+      },
+      "ans": "d"
+    },
+    {
+      "category": "Digital Marketing",
+      "question": "Which metric is used to measure the percentage of visitors who leave a website after viewing only one page?",
+      "code": "",
+      "options": {
+        "a": "Click-Through Rate (CTR)",
+        "b": "Bounce Rate",
+        "c": "Conversion Rate",
+        "d": "Page Rank"
+      },
+      "ans": "b"
+    },
+    {
+      "category": "Data Structures and Algorithms",
+      "question": "What will be the output of the following Python code?",
+      "code": "arr = [10, 20, 30, 40, 50]\nprint(arr[::-1])",
+      "options": {
+        "a": "[10, 20, 30, 40, 50]",
+        "b": "[50, 40, 30, 20, 10]",
+        "c": "[40, 30, 20, 10, 50]",
+        "d": "[30, 20, 10, 50, 40]"
+      },
+      "ans": "b"
+    },
+    {
+      "category": "Database (MySQL)",
+      "question": "What will be the output of the following SQL query?",
+      "code": "SELECT COUNT(*) FROM customers WHERE age > 30;",
+      "options": {
+        "a": "Returns the total number of customers",
+        "b": "Returns the count of customers older than 30",
+        "c": "Returns the names of customers older than 30",
+        "d": "Returns the count of all customers with NULL values"
+      },
+      "ans": "b"
+    },
+    {
+      "category": "Operating Systems Concepts",
+      "question": "What happens when a process executes a system call to request a resource?",
+      "code": "",
+      "options": {
+        "a": "The request is always granted immediately",
+        "b": "The operating system checks availability and may block the process if needed",
+        "c": "The process is terminated if the resource is not available",
+        "d": "The request is ignored until all resources are available"
+      },
+      "ans": "b"
+    },
+    {
+      "category": "Basic Economics",
+      "question": "If demand increases and supply remains constant, what happens to price?",
+      "code": "",
+      "options": {
+        "a": "Increases",
+        "b": "Decreases",
+        "c": "Remains unchanged",
+        "d": "Fluctuates randomly"
+      },
+      "ans": "a"
+    },
+    {
+      "category": "Computer Fundamentals",
+      "question": "What will be the output of the following Python code?",
+      "code": "binary_number = bin(10)\nprint(binary_number)",
+      "options": {
+        "a": "0b1010",
+        "b": "1010b",
+        "c": "10b",
+        "d": "0b10"
+      },
+      "ans": "a"
+    },
+    {
+      "category": "Management Concepts",
+      "question": "What does SWOT stand for in business strategy?",
+      "code": "",
+      "options": {
+        "a": "Strength, Weakness, Operations, Time",
+        "b": "Strength, Weakness, Opportunities, Threats",
+        "c": "Strategy, Work, Optimization, Tactics",
+        "d": "Sales, Worth, Objectives, Targets"
+      },
+      "ans": "b"
+    },
+    {
+      "category": "Problem Solving (Python Coding)",
+      "question": "What will be the output of the following Python program?",
+      "code": "def factorial(n):\n    if n == 0:\n        return 1\n    else:\n        return n * factorial(n - 1)\n\nprint(factorial(4))",
+      "options": {
+        "a": "24",
+        "b": "12",
+        "c": "20",
+        "d": "10"
+      },
+      "ans": "a"
+    }
+  ]

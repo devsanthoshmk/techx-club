@@ -1,0 +1,242 @@
+[
+    {
+      "category": "Basic Programming - Python",
+      "question": "What is the correct way to declare a list in Python?",
+      "code": "",
+      "options": {
+        "a": "list = (1,2,3)",
+        "b": "list = {1,2,3}",
+        "c": "list = [1,2,3]",
+        "d": "list = <1,2,3>"
+      },
+      "ans": "c"
+    },
+    {
+      "category": "Basic Programming - Python",
+      "question": "What will print(2**3) output?",
+      "code": "",
+      "options": {
+        "a": "5",
+        "b": "8",
+        "c": "6",
+        "d": "9"
+      },
+      "ans": "b"
+    },
+    {
+      "category": "Web Development",
+      "question": "What does CSS stand for?",
+      "code": "",
+      "options": {
+        "a": "Creative Style Sheets",
+        "b": "Computer Style Sheets",
+        "c": "Cascading Style Sheets",
+        "d": "Colorful Style Sheets"
+      },
+      "ans": "c"
+    },
+    {
+      "category": "Web Development",
+      "question": "Which HTML tag is used to create a hyperlink?",
+      "code": "",
+      "options": {
+        "a": "<hlink>",
+        "b": "<a>",
+        "c": "<link>",
+        "d": "<href>"
+      },
+      "ans": "b"
+    },
+    {
+      "category": "Digital Marketing",
+      "question": "What does PPC stand for in digital marketing?",
+      "code": "",
+      "options": {
+        "a": "Pay Per Click",
+        "b": "Payment Processing Center",
+        "c": "Paid Product Campaign",
+        "d": "Page Promotion Cost"
+      },
+      "ans": "a"
+    },
+    {
+      "category": "Digital Marketing",
+      "question": "Which platform is most used for professional networking?",
+      "code": "",
+      "options": {
+        "a": "Facebook",
+        "b": "Instagram",
+        "c": "LinkedIn",
+        "d": "Twitter"
+      },
+      "ans": "c"
+    },
+    {
+      "category": "Data Structures and Algorithms",
+      "question": "Which data structure is based on FIFO (First In, First Out)?",
+      "code": "",
+      "options": {
+        "a": "Stack",
+        "b": "Queue",
+        "c": "Array",
+        "d": "Linked List"
+      },
+      "ans": "b"
+    },
+    {
+      "category": "Data Structures and Algorithms",
+      "question": "Which algorithm is best suited for searching in a sorted array?",
+      "code": "",
+      "options": {
+        "a": "Bubble Sort",
+        "b": "Merge Sort",
+        "c": "Binary Search",
+        "d": "Linear Search"
+      },
+      "ans": "c"
+    },
+    {
+      "category": "Database (MySQL)",
+      "question": "Which SQL clause is used to filter records?",
+      "code": "",
+      "options": {
+        "a": "WHERE",
+        "b": "ORDER BY",
+        "c": "GROUP BY",
+        "d": "HAVING"
+      },
+      "ans": "a"
+    },
+    {
+      "category": "Database (MySQL)",
+      "question": "What is a foreign key in SQL?",
+      "code": "",
+      "options": {
+        "a": "A key that uniquely identifies a row",
+        "b": "A key linking two tables",
+        "c": "A temporary key",
+        "d": "A primary key with NULL values"
+      },
+      "ans": "b"
+    },
+    {
+      "category": "Operating Systems Concepts",
+      "question": "What is the primary function of an operating system?",
+      "code": "",
+      "options": {
+        "a": "Compiling code",
+        "b": "Managing hardware and software",
+        "c": "Running applications",
+        "d": "Designing software"
+      },
+      "ans": "b"
+    },
+    {
+      "category": "Operating Systems Concepts",
+      "question": "Which memory is used to store the BIOS settings?",
+      "code": "",
+      "options": {
+        "a": "RAM",
+        "b": "ROM",
+        "c": "Cache",
+        "d": "SSD"
+      },
+      "ans": "b"
+    },
+    {
+      "category": "Basic Economics",
+      "question": "What is supply and demand?",
+      "code": "",
+      "options": {
+        "a": "A financial theory",
+        "b": "The balance of products available and consumer interest",
+        "c": "Government policies",
+        "d": "Marketing strategies"
+      },
+      "ans": "b"
+    },
+    {
+      "category": "Basic Economics",
+      "question": "Which economic system is controlled entirely by the government?",
+      "code": "",
+      "options": {
+        "a": "Capitalism",
+        "b": "Socialism",
+        "c": "Mixed economy",
+        "d": "Market economy"
+      },
+      "ans": "b"
+    },
+    {
+      "category": "Computer Fundamentals",
+      "question": "What is the full form of URL?",
+      "code": "",
+      "options": {
+        "a": "Uniform Resource Locator",
+        "b": "Universal Research Link",
+        "c": "User Redirect Link",
+        "d": "Uniform Retrieval Locator"
+      },
+      "ans": "a"
+    },
+    {
+      "category": "Computer Fundamentals",
+      "question": "Which of these is a primary storage device?",
+      "code": "",
+      "options": {
+        "a": "Hard disk",
+        "b": "SSD",
+        "c": "RAM",
+        "d": "USB drive"
+      },
+      "ans": "c"
+    },
+    {
+      "category": "Management Concepts",
+      "question": "What is the first step in the management process?",
+      "code": "",
+      "options": {
+        "a": "Controlling",
+        "b": "Organizing",
+        "c": "Planning",
+        "d": "Directing"
+      },
+      "ans": "c"
+    },
+    {
+      "category": "Data Structures",
+      "question": "What is the worst-case time complexity of QuickSort?",
+      "code": "",
+      "options": {
+        "a": "O(n²)",
+        "b": "O(n log n)",
+        "c": "O(n)",
+        "d": "O(log n)"
+      },
+      "ans": "a"
+    },
+    {
+      "category": "Databases",
+      "question": "What does ACID stand for in database management?",
+      "code": "",
+      "options": {
+        "a": "Automatic, Consistent, Integrated, Durable",
+        "b": "Atomicity, Consistency, Isolation, Durability",
+        "c": "Access, Control, Integrity, Data",
+        "d": "Algorithm, Computation, Information, Database"
+      },
+      "ans": "b"
+    },
+    {
+      "category": "Operating Systems",
+      "question": "What is a deadlock in operating systems?",
+      "code": "",
+      "options": {
+        "a": "A process that is executing without stopping",
+        "b": "A situation where a program crashes",
+        "c": "A situation where two or more processes are waiting for resources indefinitely",
+        "d": "An error in memory management"
+      },
+      "ans": "c"
+    }
+  ]

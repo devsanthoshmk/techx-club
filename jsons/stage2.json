@@ -1,0 +1,182 @@
+[
+    {
+      "category": "Basic Programming - Python",
+      "question": "What will print(bool([])) output in Python?",
+      "code": "",
+      "options": {
+        "a": "True",
+        "b": "False",
+        "c": "Error",
+        "d": "None"
+      },
+      "ans": "b"
+    },
+    {
+      "category": "Basic Programming - Python",
+      "question": "Which of the following is used to handle exceptions in Python?",
+      "code": "",
+      "options": {
+        "a": "try-except",
+        "b": "if-else",
+        "c": "switch-case",
+        "d": "error-handler"
+      },
+      "ans": "a"
+    },
+    {
+      "category": "Web Development",
+      "question": "Which tag is used to define an internal CSS in HTML?",
+      "code": "",
+      "options": {
+        "a": "<css>",
+        "b": "<style>",
+        "c": "<link>",
+        "d": "<script>"
+      },
+      "ans": "b"
+    },
+    {
+      "category": "Web Development",
+      "question": "What does 'href' in an anchor tag <a> define?",
+      "code": "",
+      "options": {
+        "a": "Hyperlink Reference",
+        "b": "HTML Rendering Framework",
+        "c": "Header Reference",
+        "d": "Hypertext Result File"
+      },
+      "ans": "a"
+    },
+    {
+      "category": "Digital Marketing",
+      "question": "Which of the following is an example of Digital Marketing?",
+      "code": "",
+      "options": {
+        "a": "TV Advertisements",
+        "b": "Social Media Ads",
+        "c": "Radio Advertisements",
+        "d": "Newspaper Ads"
+      },
+      "ans": "b"
+    },
+    {
+      "category": "Data Structure and Algorithms",
+      "question": "Which of these data structures follows LIFO (Last In, First Out)?",
+      "code": "",
+      "options": {
+        "a": "Queue",
+        "b": "Stack",
+        "c": "Array",
+        "d": "Linked List"
+      },
+      "ans": "b"
+    },
+    {
+      "category": "Data Structure and Algorithms",
+      "question": "What is an advantage of using recursion in programming?",
+      "code": "",
+      "options": {
+        "a": "It reduces function calls",
+        "b": "It simplifies complex problems",
+        "c": "It speeds up execution",
+        "d": "It decreases memory usage"
+      },
+      "ans": "b"
+    },
+    {
+      "category": "Database (MySQL)",
+      "question": "Which SQL statement is used to remove all records from a table but keeps its structure?",
+      "code": "",
+      "options": {
+        "a": "DELETE",
+        "b": "REMOVE",
+        "c": "DROP",
+        "d": "TRUNCATE"
+      },
+      "ans": "d"
+    },
+    {
+      "category": "Database (MySQL)",
+      "question": "Which database key is used to uniquely identify each row in a table?",
+      "code": "",
+      "options": {
+        "a": "Foreign key",
+        "b": "Super key",
+        "c": "Candidate key",
+        "d": "Primary key"
+      },
+      "ans": "d"
+    },
+    {
+      "category": "Operating Systems Concepts",
+      "question": "What is the main role of an operating system kernel?",
+      "code": "",
+      "options": {
+        "a": "Manage files",
+        "b": "Manage hardware and software communication",
+        "c": "Display graphics",
+        "d": "Control network access"
+      },
+      "ans": "b"
+    },
+    {
+      "category": "Operating Systems Concepts",
+      "question": "What is the primary difference between a process and a thread?",
+      "code": "",
+      "options": {
+        "a": "A process is a lightweight operation, while a thread is heavyweight",
+        "b": "A thread is a lightweight operation, while a process is heavyweight",
+        "c": "Both are identical in execution",
+        "d": "Threads consume more memory than processes"
+      },
+      "ans": "b"
+    },
+    {
+      "category": "Basic Economics",
+      "question": "What is the term used for the total market value of all final goods and services produced within a country in a given year?",
+      "code": "",
+      "options": {
+        "a": "Gross National Product (GNP)",
+        "b": "Net National Product (NNP)",
+        "c": "Gross Domestic Product (GDP)",
+        "d": "Consumer Price Index (CPI)"
+      },
+      "ans": "c"
+    },
+    {
+      "category": "Computer Fundamentals",
+      "question": "Which of the following is an example of a dynamically typed language?",
+      "code": "",
+      "options": {
+        "a": "C++",
+        "b": "Java",
+        "c": "Python",
+        "d": "Swift"
+      },
+      "ans": "c"
+    },
+    {
+      "category": "Management Concepts",
+      "question": "What is the primary function of management in an organization?",
+      "code": "",
+      "options": {
+        "a": "Marketing",
+        "b": "Planning, Organizing, Leading, and Controlling (POLC)",
+        "c": "Selling products",
+        "d": "Maintaining accounts"
+      },
+      "ans": "b"
+    },
+    {
+      "category": "Database (MySQL)",
+      "question": "What is the main advantage of indexing in a database?",
+      "code": "",
+      "options": {
+        "a": "Slows down queries",
+        "b": "Increases redundancy",
+        "c": "Speeds up searching",
+        "d": "Deletes duplicate records"
+      },
+      "ans": "c"
+    }
+  ]
