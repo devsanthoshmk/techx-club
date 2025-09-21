@@ -1,6 +1,7 @@
 
 <template>
   <div class="parallax-container">
+    <QuestionSelect />
     <ProgressBar :progress="((currentQuestion + 1) / questions.length) * 100" />
     <ScorePanel :score="score" />
 
@@ -33,6 +34,7 @@ import ScorePanel from "./components/ScorePanel.vue";
 import IntroSection from "./components/IntroSection.vue";
 import QuestionSection from "./components/QuestionSection.vue";
 import SummarySection from "./components/SummarySection.vue";
+import QuestionSelect from "./components/QuestionSelect.vue";
 
 import { questions } from "./data/questions";
 

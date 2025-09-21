@@ -79,21 +79,43 @@ const toggleSidebar = () => {
   left: 0;
 }
 
-/* Header */
+/* Sidebar Header */
 .sidebar-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 16px;
-  border-bottom: 1px solid #333;
+  padding: 14px 20px;
+  background: #2a2a40;
+  border-bottom: 1px solid #444;
+  position: sticky; /* keeps header visible when scrolling */
+  top: 0;
+  z-index: 10;
 }
+
+/* Title */
+.sidebar-header h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #ffffff;
+  letter-spacing: 0.5px;
+}
+
+/* Close button */
 .close-btn {
-  background: transparent;
+  background: #3b82f6;
   border: none;
   color: #fff;
-  font-size: 18px;
+  font-size: 16px;
+  padding: 6px 10px;
+  border-radius: 6px;
   cursor: pointer;
+  transition: background 0.3s;
 }
+.close-btn:hover {
+  background: #2563eb;
+}
+
 
 /* Question List */
 .question-list {
