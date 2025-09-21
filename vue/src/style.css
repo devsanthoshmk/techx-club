@@ -1,0 +1,369 @@
+/* Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary: #3a86ff;
+  --secondary: #ff006e;
+  --tertiary: #8338ec;
+  --light: #f8f9fa;
+  --dark: #212529;
+  --correct: #38b000;
+  --incorrect: #d00000;
+  --highlight: #ffbe0b;
+}
+
+html {
+  font-size: 18px;
+  scroll-behavior: smooth;
+  color: var(--dark);
+  background-color: #000;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  line-height: 1.6;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+}
+
+/* Parallax Scrolling Setup */
+.parallax-container {
+  height: 100vh;
+  width: 100vw;
+  overflow-y: auto;
+  overflow-x: hidden;
+  perspective: 10px;
+  scroll-snap-type: y mandatory;
+}
+
+.parallax-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bg-layer {
+  transform: translateZ(-10px) scale(2);
+}
+
+.mid-layer {
+  transform: translateZ(-5px) scale(1.5);
+}
+
+.front-layer {
+  transform: translateZ(0);
+}
+
+/* Section Styling */
+section {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  scroll-snap-align: start;
+  background-size: cover;
+  background-position: center;
+  color: var(--light);
+  overflow: hidden;
+}
+
+.content-container {
+  background: rgba(255, 255, 255, 0.1);
+  /* lighter + transparent for glass */
+  backdrop-filter: blur(12px) saturate(150%);
+  /* stronger blur + vibrant look */
+  -webkit-backdrop-filter: blur(12px) saturate(150%);
+  /* Safari support */
+
+  border-radius: 12px;
+  padding: 2rem;
+  width: 90%;
+  max-width: 1000px;
+
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  /* soft shadow for depth */
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  /* subtle glass border */
+  z-index: 10;
+  color: #fff;
+  /* text stays visible */
+}
+
+/* Header and Title Styling */
+h1 {
+  font-size: 3.5rem;
+  background: linear-gradient(45deg, var(--primary), var(--tertiary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+h3 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: var(--light);
+  text-align: center;
+}
+
+h4 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--highlight);
+}
+
+/* Quiz Styling */
+.quiz-question {
+  margin-bottom: 2rem;
+}
+
+.options {
+  list-style-type: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.option {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+  border: 2px solid transparent;
+}
+
+.option:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+  border-color: var(--primary);
+}
+
+.option.selected {
+  background: rgba(58, 134, 255, 0.3);
+  border-color: var(--primary);
+}
+
+.option.correct {
+  background: rgba(56, 176, 0, 0.3);
+  border-color: var(--correct);
+}
+
+.option.incorrect {
+  background: rgba(208, 0, 0, 0.3);
+  border-color: var(--incorrect);
+}
+
+/* Code Blocks */
+pre {
+  background: rgba(0, 0, 0, 0.6);
+  padding: 1rem;
+  border-radius: 8px;
+  overflow-x: auto;
+  margin: 1rem 0;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+code {
+  color: #f8f8f2;
+}
+
+/* Navigation */
+.nav-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+}
+
+.nav-button {
+  background: linear-gradient(45deg, var(--primary), var(--tertiary));
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all 0.3s;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.nav-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+.nav-button:active {
+  transform: translateY(-1px);
+}
+
+.nav-button:disabled {
+  background: #666;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Progress Bar */
+.progress-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 8px;
+  z-index: 100;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary), var(--tertiary));
+  width: 0;
+  transition: width 0.3s;
+}
+
+/* Score Panel */
+.score-panel {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 1rem;
+  border-radius: 10px;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.score {
+  color: var(--light);
+  font-weight: bold;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-20px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 1s ease-out forwards;
+}
+
+.floating {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Background Decorations */
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+/* Introduction and Summary Sections */
+.intro-section,
+.summary-section {
+  text-align: center;
+  padding: 2rem;
+}
+
+.intro-section p,
+.summary-section p {
+  font-size: 1.2rem;
+  max-width: 800px;
+  margin: 1rem auto;
+}
+
+.start-button {
+  background: linear-gradient(45deg, var(--tertiary), var(--secondary));
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1.5rem;
+  border-radius: 50px;
+  cursor: pointer;
+  margin-top: 2rem;
+  transition: all 0.3s;
+  font-weight: bold;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.start-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.5);
+}
+
+/* Timer */
+.timer {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--light);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+  }
+
+  .content-container {
+    width: 95%;
+    padding: 1.5rem;
+  }
+
+  .options {
+    grid-template-columns: 1fr;
+  }
+}
