@@ -1,7 +1,8 @@
 <template>
   <div v-if="presses.length!==0" class="buzzer-container">
     <!-- Header -->
-    <h2 class="buzzer-header">Buzzer Presses ({{ presses.length }})</h2>
+    <h2 class="buzzer-header"><p>Buzzer Presses ({{ presses.length }})</p><span @click="reset">x</span></h2>
+    
 
     <!-- Body -->
     <transition-group name="fade-slide" tag="div" class="buzzer-body">
@@ -14,10 +15,16 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from "vue";
+import { ref, onMounted,onUnmounted, watchEffect } from "vue";
 import socket from "../socket/socketio";
 
-const presses = ref([]);
+const props = defineProps({
+    questionNo:Number
+})
+
+const presses = ref(
+  JSON.parse(localStorage.getItem('busser') || "{}")[props.questionNo] || []
+);
 let firstClickTime = null;
 let counter = 1;
 
@@ -28,29 +35,19 @@ socket.on("connect", () => {
     console.warn("admin socket connected", socket.id);
 });
 
-socket.on("init", (data) => {
-    console.log(data)
-    (data.clicks || []).forEach((data) => {
-        presses.value = [];
-        counter = 1
-        presses.value.push({
-            id: counter++,
-            name: data.name,
-            delay: (data.delayFromFirstMs / 1000).toFixed(2)
-        })
-    })
-});
 
 socket.on("clickUpdate", (click) => {
     const temp = presses.value
+    console.log()
     temp.push({
         id: counter++,
         name: click.name,
-        delay: (click.delayFromFirstMs / 1000).toFixed(2)
+        delay: click.delayFromFirstMs.toFixed(2)
     })
 
     // sort here
-    presses.value = temp
+    presses.value = temp.sort((a, b) => a.delay - b.delay);
+
 
 });
 
@@ -65,7 +62,8 @@ socket.on("firstPress", (click) => {
     })
 
     // sort here
-    process.value=temp
+    presses.value = temp.sort((a, b) => a.delay - b.delay);
+
 
 });
 
@@ -74,18 +72,16 @@ socket.on("reset", () => {
     presses.value=[]
 });
 
-onMounted(() => {
-  // Simulate buzzer presses every 3 seconds
-//   setInterval(() => {
-//     const now = Date.now();
-//     if (!firstClickTime) firstClickTime = now;
+const reset = async () => {
+    await fetch("http://localhost:4000/reset", { method: "POST" });
+    const temp = JSON.parse(localStorage.getItem("busser"))
+    delete temp[props.questionNo];
+    localStorage.setItem("busser",JSON.stringify(temp))
+};
 
-//     presses.value.push({
-//       id: counter++,
-//       name: students[Math.floor(Math.random() * students.length)],
-//       delay: ((now - firstClickTime) / 1000).toFixed(2),
-//     });
-//   }, 3000);
+onUnmounted(() => {
+    const prevstorage = JSON.parse(localStorage.getItem('busser')||"{}")
+    localStorage.setItem('busser', JSON.stringify({ ...prevstorage, [props.questionNo]: presses.value }));
 });
 </script>
 
@@ -110,6 +106,8 @@ onMounted(() => {
   text-align: center;
   color: #facc15; /* Yellow theme */
   margin-bottom: 16px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .buzzer-body {

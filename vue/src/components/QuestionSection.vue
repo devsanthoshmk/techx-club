@@ -1,4 +1,5 @@
 <script setup>
+import { questions } from "../data/questions";
 import BusserClicks from "./BusserClicks.vue";
 import OptionItem from "./OptionItem.vue";
 
@@ -39,6 +40,6 @@ const emit = defineEmits(["select", "next", "prev"]);
         </button>
       </div>
     </div>
-    <BusserClicks/>
+    <BusserClicks :questionNo="index + 1" :key="index"/>
   </section>
 </template>

@@ -88,12 +88,11 @@ app.post("/click", (req, res) => {
   if (!firstPressTime) {
     firstPressTime = clientTs;
   }
-  const delayFromFirstMs = clientTs - firstPressTime;
-
+  const delayFromFirst = (clientTs-firstPressTime)/1000;
   const click = {
     name,
     clientTs,
-    delayFromFirstMs,
+    delayFromFirst,
   };
 
   // If first press, send a special event with same payload
