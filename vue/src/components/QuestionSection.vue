@@ -1,4 +1,5 @@
 <script setup>
+import BusserClicks from "./BusserClicks.vue";
 import OptionItem from "./OptionItem.vue";
 
 const props = defineProps({
@@ -38,5 +39,6 @@ const emit = defineEmits(["select", "next", "prev"]);
         </button>
       </div>
     </div>
+    <BusserClicks/>
   </section>
 </template>

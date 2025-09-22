@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Admin</title>
+    <script src="https://cdn.socket.io/4.7.1/socket.io.min.js"></script>
+    <style>
+        body {
+            font-family: sans-serif;
+            padding: 1rem;
+        }
+
+        .click {
+            margin: 0.25rem 0;
+            padding: 0.5rem;
+            border-radius: 6px;
+            background: #f3f3f3;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Admin Panel</h1>
+    <p id="first">No first press yet</p>
+    <button id="resetBtn">Reset</button>
+
+    <h2>Recent clicks</h2>
+    <div id="clicks"></div>
+
+    <script>
+        const socket = io("http://localhost:4000", {
+            transports: ["websocket", "polling"],
+            query: { role: "admin" } // tell server this socket is an admin
+        });
+
+        const clicksEl = document.getElementById("clicks");
+        const firstEl = document.getElementById("first");
+
+        function renderClick(c) {
+            const el = document.createElement("div");
+            el.className = "click";
+            el.innerHTML = `
+            <strong>${c.name}</strong>
+            <div>Client time: ${new Date(c.clientTs).toLocaleString()}</div>
+            <div>Delay from first press: ${c.delayFromFirstMs} ms</div>
+        `;
+            clicksEl.append(el); // newest first
+        }
+
+        socket.on("connect", () => {
+            console.log("admin socket connected", socket.id);
+        });
+
+        socket.on("init", (data) => {
+            // populate initial state
+            clicksEl.innerHTML = "";
+            (data.clicks || []).forEach(renderClick);
+            if (data.firstPressInfo) {
+                firstEl.innerText = `First pressed by ${data.firstPressInfo.name} at ${new Date(data.firstPressInfo.clientTs).toLocaleString()}`;
+            } else {
+                firstEl.innerText = "No first press yet";
+            }
+        });
+
+        socket.on("clickUpdate", (click) => {
+            renderClick(click);
+        });
+
+        socket.on("firstPress", (click) => {
+            firstEl.innerText = `First pressed by ${click.name} at ${new Date(click.clientTs).toLocaleString()}`;
+            renderClick(click);
+        });
+
+        socket.on("reset", () => {
+            clicksEl.innerHTML = "";
+            firstEl.innerText = "";
+        });
+
+        document.getElementById("resetBtn").onclick = async () => {
+            await fetch("http://localhost:4000/reset", { method: "POST" });
+        };
+    </script>
+
+</body>
+
+</html>

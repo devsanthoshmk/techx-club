@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Client</title>
+</head>
+
+<body>
+    <h1>Press the button!</h1>
+    <label>
+        Name: <input id="name" placeholder="Anonymous" />
+    </label>
+    <button id="pressBtn">Press Me</button>
+    <p id="status"></p>
+
+    <script>
+        const API = "http://localhost:4000";
+        let clockOffsetMs = 0; // serverTime - clientTime (estimate)
+
+        // Simple single-sample clock sync: measure RTT and estimate offset
+        async function syncClock() {
+            try {
+                const t0 = performance.now();
+                const resp = await fetch(API + "/time");
+                const t1 = performance.now();
+                const body = await resp.json();
+                const rtt = t1 - t0;
+                const serverTime = body.serverTime;
+                // assume half RTT
+                const approxClientTimeAtServerResponse = Date.now() - rtt / 2;
+                clockOffsetMs = serverTime - approxClientTimeAtServerResponse;
+                console.log("clock sync done, offset (ms):", clockOffsetMs, "RTT(ms):", rtt);
+            } catch (e) {
+                console.warn("clock sync failed:", e);
+            }
+        }
+
+        // call it once on load; you can call multiple times to improve accuracy
+        syncClock();
+
+        function retry() {
+            if (ClickedTime) fetchbackend(ClickedTime);
+        }
+
+        let ClickedTime;
+        document.getElementById("pressBtn").onclick = () => {
+            fetchbackend()
+        }
+        const fetchbackend = async (retry) => {
+            const name = document.getElementById("name").value || "Anonymous";
+            let correctedClientTs;
+            if (!retry) {
+                // corrected client timestamp using previously computed offset
+                correctedClientTs = Date.now() + (clockOffsetMs || 0);
+                ClickedTime = correctedClientTs;
+            } else {
+                correctedClientTs = retry;
+            }
+
+            // send via REST POST to server (no socket.io)
+            try {
+                await fetch(API + "/click", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ name, clientTs: correctedClientTs })
+                });
+                document.getElementById("status").innerText = "Clicked (sent to server).";
+            } catch (err) {
+                document.getElementById("status").innerText = "Failed to send click: " + err.message;
+                document.getElementById("status").innerHTML = "<button onclick='retry()'>retry</button>"
+            }
+        };
+    </script>
+</body>
+
+</html>
