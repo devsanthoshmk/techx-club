@@ -41,19 +41,19 @@
         }
     }
 
-    function router() {
+    async function router() {
         const path = window.location.pathname;
         console.log(path)
         if (path === '/quiz') {
             window.title = "Tech Quiz | TECHX";
             const iframe = document.createElement('iframe');
-            iframe.src = fetchUrl(path.slice(1))
+            iframe.src = await fetchUrl(path.slice(1))
             document.body.innerHTML = ''; // optional: clear existing content
             document.body.appendChild(iframe);
         } else if (path === '/busser') {
             window.title = "busser Quiz-Busser | TECHX";
             const iframe = document.createElement('iframe');
-            iframe.src = fetchUrl(path.slice(1))
+            iframe.src = await fetchUrl(path.slice(1))
             document.body.innerHTML = ''; // optional: clear existing content
             document.body.appendChild(iframe);
         } else {
