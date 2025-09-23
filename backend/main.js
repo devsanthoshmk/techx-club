@@ -7,15 +7,18 @@ import { Server } from "socket.io";
 const app = express();
 // allow local dev origins (change for production)
 app.use(cors({
-  origin: ["http://localhost:3000", "http://127.0.0.1:5500", "http://localhost:5500","http://localhost:5173"],
+  origin: "*",   // allow everything while testing with loca.lt
+  methods: ["GET", "POST", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "bypass-tunnel-reminder"],
   credentials: true
 }));
+
 app.use(express.json());
 
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: ["http://localhost:3000", "http://127.0.0.1:5500", "http://localhost:5500","http://localhost:5173"],
+    origin: ["http://localhost:3000", "http://127.0.0.1:5500", "http://localhost:5500","http://localhost:5173","https://quiztechx.pages.dev"],
     methods: ["GET", "POST"],
     credentials: true
   }
@@ -25,6 +28,15 @@ const io = new Server(server, {
 const clicks = [];               // array of { name, clientTs, clientIso, serverTs, iso, delayFromFirstMs, clientServerSkewMs }
 let firstPressTime = null;       // server timestamp (ms)
 let firstPressInfo = null;       // full info for first press
+
+
+app.options("*", (req, res) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, bypass-tunnel-reminder");
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+  res.sendStatus(200);
+});
+
 
 // Admin REST endpoint to fetch logs (useful for page load)
 app.get("/admin/logs", (req, res) => {

@@ -1,12 +1,14 @@
 <script setup>
 import { ref } from "vue";
+import { questions } from "../data/questions";
 
 const isOpen = ref(false);
-const totalQuestions = 20; // adjust as needed
 
 const toggleSidebar = () => {
   isOpen.value = !isOpen.value;
 };
+const emit = defineEmits(['change'])
+console.log(questions)
 </script>
 
 <template>
@@ -23,15 +25,17 @@ const toggleSidebar = () => {
         <button class="close-btn" @click="toggleSidebar">✖</button>
       </div>
 
-      <div class="question-list">
-        <button
-          v-for="n in totalQuestions"
-          :key="n"
-          class="question-btn"
-        >
-          {{ n }}
-        </button>
-      </div>
+     <div class="question-list">
+  <button
+    v-for="(question, index) in questions"
+    :key="index"
+    class="question-btn"
+    @click="() => emit('change', index)"
+  >
+    {{ index + 1 }}
+  </button>
+</div>
+
     </div>
 
     <!-- Overlay (click to close) -->

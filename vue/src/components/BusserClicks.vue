@@ -42,7 +42,7 @@ socket.on("clickUpdate", (click) => {
     temp.push({
         id: counter++,
         name: click.name,
-        delay: click.delayFromFirstMs.toFixed(2)
+        delay: click.delayFromFirst
     })
 
     // sort here

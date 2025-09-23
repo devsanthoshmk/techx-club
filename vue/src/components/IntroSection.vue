@@ -17,8 +17,8 @@ const emit = defineEmits(["restart"]);
       </div>
       <div class="parallax-layer front-layer">
         <div class="content-container animate-fade-in">
-          <h1>National Science Day Quiz</h1>
-          <p>Welcome to the National Science Day Quiz Challenge! Test your knowledge across various technical domains and problem-solving skills.</p>
+          <h1>TechX quiz</h1>
+          <p>Welcome to the TechX quiz Challenge! Test your knowledge across various technical domains and problem-solving skills.</p>
           <p>This quiz consists of 10 challenging questions covering programming, web development, algorithms, and more.</p>
           <button class="start-button" id="startButton">Start Quiz</button>
         </div>

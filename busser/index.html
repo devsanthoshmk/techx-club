@@ -3,31 +3,129 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>Client</title>
+    <title>Buzzer Client</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.08);
+            padding: 2rem 3rem;
+            border-radius: 1rem;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+            max-width: 400px;
+            width: 100%;
+        }
+
+        h1 {
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            letter-spacing: 1px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+
+        input {
+            padding: 0.6rem 1rem;
+            border: none;
+            border-radius: 0.5rem;
+            outline: none;
+            width: 100%;
+            max-width: 250px;
+            font-size: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        #pressBtn {
+            background: #ff4757;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 1.5rem 0;
+            box-shadow: 0 6px 15px rgba(255, 71, 87, 0.6);
+            transition: all 0.2s ease-in-out;
+        }
+
+        #pressBtn:hover {
+            background: #ff6b81;
+            transform: scale(1.05);
+        }
+
+        #pressBtn:active {
+            transform: scale(0.95);
+            background: #e84118;
+        }
+
+        #status {
+            margin-top: 1rem;
+            font-size: 1rem;
+            min-height: 1.5rem;
+        }
+
+        #status button {
+            background: #2ed573;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            color: white;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background 0.2s;
+        }
+
+        #status button:hover {
+            background: #1eae60;
+        }
+    </style>
 </head>
 
 <body>
-    <h1>Press the button!</h1>
-    <label>
-        Name: <input id="name" placeholder="Anonymous" />
-    </label>
-    <button id="pressBtn">Press Me</button>
-    <p id="status"></p>
+    <div class="container">
+        <h1>🚨 Press the Buzzer!</h1>
+        <label>
+            Name: <br>
+            <input id="name" placeholder="Anonymous" />
+        </label>
+        <button id="pressBtn">Buzz!</button>
+        <p id="status"></p>
+    </div>
 
     <script>
-        const API = "http://localhost:4000";
+        const API = "https://shaggy-ghosts-camp.loca.lt";
         let clockOffsetMs = 0; // serverTime - clientTime (estimate)
 
-        // Simple single-sample clock sync: measure RTT and estimate offset
         async function syncClock() {
             try {
                 const t0 = performance.now();
-                const resp = await fetch(API + "/time");
+                const resp = await fetch(API + "/time", {
+                    method: "GET",
+                    headers: {
+                        "bypass-tunnel-reminder": "1"    // <-- add this
+                    },
+                    credentials: "include" // if you are using cookies/auth; optional
+                });
                 const t1 = performance.now();
                 const body = await resp.json();
                 const rtt = t1 - t0;
                 const serverTime = body.serverTime;
-                // assume half RTT
                 const approxClientTimeAtServerResponse = Date.now() - rtt / 2;
                 clockOffsetMs = serverTime - approxClientTimeAtServerResponse;
                 console.log("clock sync done, offset (ms):", clockOffsetMs, "RTT(ms):", rtt);
@@ -36,7 +134,6 @@
             }
         }
 
-        // call it once on load; you can call multiple times to improve accuracy
         syncClock();
 
         function retry() {
@@ -51,24 +148,21 @@
             const name = document.getElementById("name").value || "Anonymous";
             let correctedClientTs;
             if (!retry) {
-                // corrected client timestamp using previously computed offset
                 correctedClientTs = Date.now() + (clockOffsetMs || 0);
                 ClickedTime = correctedClientTs;
             } else {
                 correctedClientTs = retry;
             }
 
-            // send via REST POST to server (no socket.io)
             try {
                 await fetch(API + "/click", {
                     method: "POST",
-                    headers: { "Content-Type": "application/json" },
+                    headers: { "Content-Type": "application/json", "bypass-tunnel-reminder": "1" },
                     body: JSON.stringify({ name, clientTs: correctedClientTs })
                 });
-                document.getElementById("status").innerText = "Clicked (sent to server).";
+                document.getElementById("status").innerText = "✅ Clicked (sent to server).";
             } catch (err) {
-                document.getElementById("status").innerText = "Failed to send click: " + err.message;
-                document.getElementById("status").innerHTML = "<button onclick='retry()'>retry</button>"
+                document.getElementById("status").innerHTML = "<button onclick='retry()'>Retry</button>"
             }
         };
     </script>

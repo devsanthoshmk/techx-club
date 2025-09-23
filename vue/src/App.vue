@@ -1,9 +1,9 @@
 
 <template>
   <div class="parallax-container">
-    <QuestionSelect />
+    <QuestionSelect @change="changeQuestion" />
     <ProgressBar :progress="((currentQuestion + 1) / questions.length) * 100" />
-    <ScorePanel :score="score" />
+    <!-- <ScorePanel :score="score" /> -->
 
     <IntroSection v-if="!started && !finished" @click="startQuiz" />
 
@@ -72,6 +72,9 @@ function selectAnswer(option) {
   answers.value[currentQuestion.value] = option;
 }  
 
+function changeQuestion(no) {
+  currentQuestion.value=no
+}
 
 // Create particles for background decoration
 function createParticles() {

@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "routes": [
+    {
+      "pattern": "/quiz",
+      "pathname": "/index.html"
+    },
+    {
+      "pattern": "/busser",
+      "pathname": "/index.html"
+    }
+  ]
+}
