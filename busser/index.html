@@ -109,7 +109,19 @@
     </div>
 
     <script>
-        const API = "https://shaggy-ghosts-camp.loca.lt";
+        let API;
+        async function fetchBackendKey() {
+            try {
+                const response = await fetch('https://techx.connectwithsanthoshmk.workers.dev/?key=backend')
+                if (!response.ok) throw new Error('Failed to fetch backend key')
+                API = await response.text()
+            } catch (err) {
+                console.error('Error fetching backend key:', err)
+            }
+            return API
+        }
+        fetchBackendKey()
+
         let clockOffsetMs = 0; // serverTime - clientTime (estimate)
 
         async function syncClock() {

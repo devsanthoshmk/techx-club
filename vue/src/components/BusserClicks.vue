@@ -17,6 +17,11 @@
 <script setup>
 import { ref, onMounted,onUnmounted, watchEffect } from "vue";
 import socket from "../socket/socketio";
+import { useBackendKey } from "../data/backendApi";
+
+const { backendKey } = useBackendKey;
+
+const backendApi = backendKey.value;
 
 const props = defineProps({
     questionNo:Number
@@ -73,7 +78,7 @@ socket.on("reset", () => {
 });
 
 const reset = async () => {
-    await fetch("http://localhost:4000/reset", { method: "POST" });
+    await fetch(backendApi, { method: "POST" });
     const temp = JSON.parse(localStorage.getItem("busser"))
     delete temp[props.questionNo];
     localStorage.setItem("busser",JSON.stringify(temp))

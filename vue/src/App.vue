@@ -38,6 +38,12 @@ import QuestionSelect from "./components/QuestionSelect.vue";
 
 import { questions } from "./data/questions";
 
+import { useBackendKey } from "./data/backendApi";
+
+const { fetchBackendKey } = useBackendKey;
+
+fetchBackendKey()
+
 const currentQuestion = ref(0);
 const answers = ref(Array(questions.length).fill(null));
 const score = computed(() =>
@@ -105,6 +111,7 @@ function createParticles() {
     container.appendChild(particle);
   }
 }
+
 onMounted(() => {
 
   createParticles();

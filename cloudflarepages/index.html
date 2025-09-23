@@ -5,26 +5,59 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TechX</title>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        iframe {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    </style>
 </head>
 
 <body>
-    <div id="app"></div>
+    <iframe></iframe>
 </body>
 
 <script>
+    async function fetchUrl(arg) {
+        try {
+            const response = await fetch('https://techx.connectwithsanthoshmk.workers.dev/?key=' + arg)
+            if (!response.ok) throw new Error('Failed to fetch backend key')
+            const api = await response.text()
+            return api
+        } catch (err) {
+            console.error('Error fetching backend key:', err)
+        }
+    }
+
     function router() {
         const path = window.location.pathname;
         console.log(path)
-        const app = document.getElementById('app');
-
         if (path === '/quiz') {
             window.title = "Tech Quiz | TECHX";
-            app.innerHTML = 'quize Loading...';
+            const iframe = document.createElement('iframe');
+            iframe.src = fetchUrl(path.slice(1))
+            document.body.innerHTML = ''; // optional: clear existing content
+            document.body.appendChild(iframe);
         } else if (path === '/busser') {
             window.title = "busser Quiz-Busser | TECHX";
-            app.innerHTML = 'Loading...';
+            const iframe = document.createElement('iframe');
+            iframe.src = fetchUrl(path.slice(1))
+            document.body.innerHTML = ''; // optional: clear existing content
+            document.body.appendChild(iframe);
         } else {
-            app.innerHTML = '<h1>404 - Page Not Found</h1>';
+            document.body.innerHTML = '<h1>404 - Page Not Found</h1>';
         }
     }
     router();
