@@ -2,9 +2,9 @@
 import { io } from "socket.io-client";
 import { useBackendKey } from "../data/backendApi";
 
-const { backendKey } = useBackendKey;
+const { backendKey,fetchBackendKey } = useBackendKey();
 
-const backendApi = backendKey.value;
+const backendApi = await fetchBackendKey();
 // Replace with your server URL
 const socket = io(backendApi, {
             transports: ["websocket", "polling"],

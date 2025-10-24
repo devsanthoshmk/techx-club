@@ -16,7 +16,7 @@ const emit = defineEmits(["select", "next", "prev"]);
 <template>
   <section class="question-section">
     <div class="content-container">
-      <h3>{{ question.category }}</h3>
+      <h3>Instant change {{ question.category }}</h3>
       <h4>{{ index + 1 }}. {{ question.question }}</h4>
 
       <pre v-if="question.code"><code>{{ question.code }}</code></pre>

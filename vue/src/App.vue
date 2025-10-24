@@ -40,9 +40,9 @@ import { questions } from "./data/questions";
 
 import { useBackendKey } from "./data/backendApi";
 
-const { fetchBackendKey } = useBackendKey;
+const { fetchBackendKey } = useBackendKey();
 
-fetchBackendKey()
+fetchBackendKey();
 
 const currentQuestion = ref(0);
 const answers = ref(Array(questions.length).fill(null));

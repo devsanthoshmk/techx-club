@@ -13,6 +13,7 @@ export function useBackendKey() {
     } catch (err) {
       console.error('Error fetching backend key:', err)
     }
+    console.log('Fetched backend key:', backendKey.value)
     return backendKey.value
   }
 

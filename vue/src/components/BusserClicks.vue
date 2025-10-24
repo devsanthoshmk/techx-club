@@ -8,7 +8,7 @@
     <transition-group name="fade-slide" tag="div" class="buzzer-body">
       <div v-for="(press, index) in presses" :key="press.id" class="buzzer-item">
         <span class="buzzer-name">{{ press.name }}</span>
-        <span v-if="index > 0" class="buzzer-delay">+{{ press.delay }}s</span>
+        <span v-if="index > 0" class="buzzer-delay">-{{ (press.delay/1000).toFixed(2) }}s</span>
       </div>
     </transition-group>
   </div>
@@ -19,7 +19,7 @@ import { ref, onMounted,onUnmounted, watchEffect } from "vue";
 import socket from "../socket/socketio";
 import { useBackendKey } from "../data/backendApi";
 
-const { backendKey } = useBackendKey;
+const { backendKey } = useBackendKey();
 
 const backendApi = backendKey.value;
 
@@ -43,7 +43,7 @@ socket.on("connect", () => {
 
 socket.on("clickUpdate", (click) => {
     const temp = presses.value
-    console.log()
+    console.log(click)
     temp.push({
         id: counter++,
         name: click.name,
@@ -78,10 +78,12 @@ socket.on("reset", () => {
 });
 
 const reset = async () => {
-    await fetch(backendApi, { method: "POST" });
-    const temp = JSON.parse(localStorage.getItem("busser"))
+  // await fetch(backendApi + `reset`);// remove from backend
+  const temp = JSON.parse(localStorage.getItem('busser') || "{}");
+    console.log(props.questionNo)
     delete temp[props.questionNo];
-    localStorage.setItem("busser",JSON.stringify(temp))
+  localStorage.setItem("busser", JSON.stringify(temp))
+    presses.value = [];
 };
 
 onUnmounted(() => {
