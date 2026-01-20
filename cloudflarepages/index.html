@@ -63,6 +63,12 @@
             document.body.innerHTML = ''; // optional: clear existing content
             document.body.appendChild(iframe);
         }
+        
+        if (path === '/sympo'){
+            document.body.innerHTML = "<h1>Redirecting...</h1>";
+            window.title = "Redirecting...";
+            window.location.href = "https://mnm-jec-techvista.pages.dev/?event_id=ev4";
+        }
     }
     router();
 </script>
